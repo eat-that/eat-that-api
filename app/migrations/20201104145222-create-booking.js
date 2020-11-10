@@ -8,22 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID
       },
-      // userId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'User',
-      //     key:'id'
-      //   }
-      // },
-      // establishmentId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Establishment',
-      //     key:'id'
-      //   }
-      // },
+      userId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Users',
+          key:'id'
+        }
+      },
+      establishmentId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Establishments',
+          key:'id'
+        }
+      },
       state: {
         type: Sequelize.STRING
       },

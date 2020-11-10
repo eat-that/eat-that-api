@@ -26,14 +26,14 @@ module.exports = {
       score: {
         type: Sequelize.FLOAT
       },
-      // menuCategoryId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'MenuCategory',
-      //     key:'id'
-      //   }
-      // },
+      menuCategoryId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'MenuCategories',
+          key:'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

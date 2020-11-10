@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       Establishment.belongsToMany(models.Specification, {through : 'EstablishmentSpecification', foreignKey:'establishmentId', as:'specification'})
       Establishment.belongsToMany(models.Type, {through : 'EstablishmentType', foreignKey:'establishmentId', as:'type'})
       Establishment.belongsToMany(models.User, {through : 'FavoriteEstablishment', foreignKey:'establishmentId', as:'userFav'})
+      Establishment.hasMany(models.Booking,{foreignKey:'establishmentId',sourceKey:'id',as:'bookings'})
     }
   };
   Establishment.init({

@@ -2,28 +2,28 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('FavoriteEstablishments', {
-      id: {
-        allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        type: Sequelize.UUID
+      // id: {
+      //   allowNull: false,
+      //   defaultValue: Sequelize.UUIDV4,
+      //   primaryKey: true,
+      //   type: Sequelize.UUID
+      // },
+      userId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Users',
+          key:'id'
+        }
       },
-      // userId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'User',
-      //     key:'id'
-      //   }
-      // },
-      // establishmentId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Establishment',
-      //     key:'id'
-      //   }
-      // },
+      establishmentId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Establishments',
+          key:'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

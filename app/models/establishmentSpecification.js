@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      EstablishmentSpecification.belongsTo(models.Establishment, { foreignKey : 'establishmentId'})
-      EstablishmentSpecification.belongsTo(models.Specification, { foreignKey : 'specificationId'})    }
+      // EstablishmentSpecification.belongsTo(models.Establishment, { foreignKey : 'establishmentId'})
+      // EstablishmentSpecification.belongsTo(models.Specification, { foreignKey : 'specificationId'})
+    }
   };
   EstablishmentSpecification.init({
     specificationId: DataTypes.UUID,

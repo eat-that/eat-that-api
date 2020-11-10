@@ -1,15 +1,14 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Menus', {
-      id: {
-        allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        type: Sequelize.UUID
-      },
-      name: {
-        type: Sequelize.STRING
+    await queryInterface.createTable('EstablishmentOwners', {
+      userId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Users',
+          key:'id'
+        }
       },
       establishmentId: {
         type: Sequelize.UUID,
@@ -30,6 +29,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Menus');
+    await queryInterface.dropTable('EstablishmentOwners');
   }
 };

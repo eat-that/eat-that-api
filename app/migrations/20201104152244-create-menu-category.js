@@ -14,14 +14,14 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      // menuId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Menu',
-      //     key:'id'
-      //   }
-      // },
+      menuId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Menus',
+          key:'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

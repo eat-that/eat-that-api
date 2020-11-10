@@ -2,28 +2,28 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('EstablishmentTypes', {
-      id: {
-        allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
-        type: Sequelize.UUID
+      // id: {
+      //   allowNull: false,
+      //   defaultValue: Sequelize.UUIDV4,
+      //   primaryKey: true,
+      //   type: Sequelize.UUID
+      // },
+      typeId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Types',
+          key:'id'
+        }
       },
-      // typeId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Type',
-      //     key:'id'
-      //   }
-      // },
-      // establishmentId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Establishment',
-      //     key:'id'
-      //   }
-      // },
+      establishmentId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Establishments',
+          key:'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

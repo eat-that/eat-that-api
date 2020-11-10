@@ -30,14 +30,6 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
-      // roleId:{
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Role',
-      //     key:'id'
-      //   }
-      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

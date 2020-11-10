@@ -20,14 +20,14 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
-      // bookingId: {
-      //   type: Sequelize.UUID,
-      //   allowNull:false,
-      //   references:{
-      //     model:'Booking',
-      //     key:'id'
-      //   }
-      // },
+      bookingId: {
+        type: Sequelize.UUID,
+        allowNull:false,
+        references:{
+          model:'Bookings',
+          key:'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
