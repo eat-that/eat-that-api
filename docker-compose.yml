@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres
+    container_name: "postgres"
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  pg_admin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4
+    ports:
+      - "15432:80"
+    environment:
+      - GUNICORN_THREADS=1
+      - PGADMIN_DEFAULT_EMAIL=admin@email.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    depends_on:
+      - postgres
+
+  node:
+    image: node
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@$postgres:5432/eat-that
+      NODE_ENV: development
+      PORT: 3001
+    ports:
+      - 3001:3001
+    restart: always
+    volumes:
+      - .:/usr/app
+    working_dir: /usr/app
+    entrypoint: [ 'npm', 'start']
+
+volumes:
+  postgres:
