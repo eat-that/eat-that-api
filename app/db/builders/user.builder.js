@@ -1,11 +1,10 @@
-const User = require('../models/user');
-
+const models = require( '../models/index');
 const bcrypt = require('bcrypt');
 
 function getAll() {
     return new Promise(async (resolve, reject) => {
         try {
-            const res = await User.findAll({attributes: {exclude: ['password']}});
+            const res = await models.User.findAll({attributes: {exclude: ['password']}});
             resolve(res);
         } catch (err) {
             reject(err);

@@ -2,9 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const db = require('./app/db/models/index');
+const routes = require('./app/modules/routes.modules');
 
 const corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
 };
 
 app.use(cors(corsOptions));
@@ -15,7 +18,7 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-require('./app/modules/routes.modules').init(app);
+app.use('/', routes);
 
 // simple route
 app.get("/", (req, res) => {
@@ -24,6 +27,10 @@ app.get("/", (req, res) => {
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-});
+db.sequelize
+    .authenticate()
+    .then(() =>
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}.`);
+        })
+    ).catch(err => console.error('failed to connect to database', err))

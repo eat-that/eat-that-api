@@ -13,7 +13,7 @@ let sequelize;
 if (config.url) {
   sequelize = new Sequelize(config.url, config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, config);
 }
 
 fs

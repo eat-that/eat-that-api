@@ -1,6 +1,7 @@
 const userRoutes = require('../routes/user.route');
+const express = require('express');
+const router = express.Router();
 
-exports.init = function (app) {
+router.use('/users', userRoutes);
 
-    app.use(process.env.API_BASE_URL + '/users', userRoutes);
-}
+module.exports = router;
