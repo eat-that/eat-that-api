@@ -13,11 +13,14 @@ function getAll() {
     });
 }
 
-function getById(userId) {
+function getByLogin(userLogin) {
     return new Promise(async (resolve, reject) => {
         try {
             // pourquoi le exclude marche pas ?
-            const res = await User.findByPk(userId, { attributes: { exclude: ['password'] } } );
+            const res = await User.findOne({
+                where: {login: userLogin},
+                attributes: {exclude: ['password']}
+            });
             resolve(res);
         } catch (err) {
             reject(err);
@@ -71,7 +74,7 @@ function deleteById(userId) {
 
 module.exports = {
     getAll,
-    getById,
+    getByLogin,
     create,
     update,
     deleteById
