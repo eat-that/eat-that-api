@@ -12,12 +12,11 @@ function getAll() {
     });
 }
 
-function getByLogin(userLogin) {
+function getByEmail(userEmail) {
     return new Promise(async (resolve, reject) => {
         try {
-            // pourquoi le exclude marche pas ?
-            const res = await User.findOne({
-                where: {login: userLogin},
+            const res = await models.User.findOne({
+                where: {email: userEmail},
                 attributes: {exclude: ['password']}
             });
             resolve(res);
@@ -32,15 +31,10 @@ function create(user) {
     return new Promise(async (resolve, reject) => {
         try {
             user.password = bcrypt.hashSync(user.password, 10)
-            // console.log(user)
             const newUser = models.User.build(user);
-            console.log({newUser})
             const res = await newUser.save()
-            // const res = await User.create(user);
-            console.log({res})
             resolve(res);
         } catch (err) {
-            console.log({err})
             reject(err);
         }
     });
@@ -53,7 +47,7 @@ function update(userId, user) {
                 user.password = bcrypt.hashSync(user.password, 10)
             }
 
-            const res = await User.update(user, {
+            const res = await models.User.update(user, {
                 where: {id: userId},
                 returning: true,
             });
@@ -78,7 +72,7 @@ function deleteById(userId) {
 
 module.exports = {
     getAll,
-    getByLogin,
+    getByEmail,
     create,
     update,
     deleteById

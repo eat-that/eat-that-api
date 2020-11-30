@@ -12,10 +12,10 @@ function getAll() {
     });
 }
 
-function getByLogin(login){
+function getByEmail(email){
     return new Promise(async(resolve,reject) => {
         try {
-            const user = await userBuilder.getByLogin(login);
+            const user = await userBuilder.getByEmail(email);
             resolve(user);
         } catch (err) {
             reject(err)
@@ -34,8 +34,20 @@ function createUser(newUser){
     });
 }
 
+function updateUser(userId,newUser){
+    return new Promise(async(resolve,reject) => {
+        try {
+            const user = await userBuilder.update(userId,newUser);
+            resolve(user);
+        } catch (err) {
+            reject(err)
+        }
+    });
+}
+
 module.exports = {
     getAll,
-    getByLogin,
-    createUser
+    getByEmail,
+    createUser,
+    updateUser
 }
