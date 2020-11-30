@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Menu.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: require("sequelize").UUIDV4
+    },
     name: DataTypes.STRING,
     establishmentId: DataTypes.UUID
   }, {

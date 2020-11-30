@@ -39,6 +39,7 @@ services:
     restart: always
     volumes:
       - .:/usr/app
+#      - /usr/app/node_modules
     working_dir: /usr/app
     entrypoint: [ 'npm', 'start']
 

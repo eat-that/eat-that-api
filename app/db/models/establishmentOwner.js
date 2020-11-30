@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   EstablishmentOwner.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: require("sequelize").UUIDV4
+    },
     establishmentId: DataTypes.UUID,
     userId: DataTypes.UUID
   }, {

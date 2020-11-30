@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Companion.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: require("sequelize").UUIDV4
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,

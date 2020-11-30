@@ -7,6 +7,8 @@ WORKDIR /usr/app
 # Install app dependencies
 COPY ./package.json /usr/app
 RUN npm install
+RUN npm uninstall bcrypt
+RUN npm i bcrypt
 COPY . /usr/app
 
 COPY . .

@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   EstablishmentSpecification.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: require("sequelize").UUIDV4
+    },
     specificationId: DataTypes.UUID,
     establishmentId: DataTypes.UUID
   }, {

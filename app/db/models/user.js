@@ -1,3 +1,4 @@
+// import { v4 as uuidv4 } from 'uuid';
 'use strict';
 const {
     Model
@@ -17,19 +18,23 @@ module.exports = (sequelize, DataTypes) => {
     User.init({
         id: {
             type: DataTypes.UUID,
-            primaryKey: true
+            primaryKey: true,
+            defaultValue: require("sequelize").UUIDV4
         },
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING,
         birthday: DataTypes.DATE,
-        adddress: DataTypes.STRING,
+        address: DataTypes.STRING,
         phone: DataTypes.STRING,
-        roleId: DataTypes.UUID
     }, {
         sequelize,
         modelName: 'User',
     });
+
+    // User.beforeCreate((user,_) => {
+    //     return user.id = uuidv4();
+    // })
     return User;
 };

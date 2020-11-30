@@ -12,6 +12,30 @@ function getAll() {
     });
 }
 
+function getByLogin(login){
+    return new Promise(async(resolve,reject) => {
+        try {
+            const user = await userBuilder.getByLogin(login);
+            resolve(user);
+        } catch (err) {
+            reject(err)
+        }
+    });
+}
+
+function createUser(newUser){
+    return new Promise(async(resolve,reject) => {
+        try {
+            const user = await userBuilder.create(newUser);
+            resolve(user);
+        } catch (err) {
+            reject(err)
+        }
+    });
+}
+
 module.exports = {
-    getAll
+    getAll,
+    getByLogin,
+    createUser
 }

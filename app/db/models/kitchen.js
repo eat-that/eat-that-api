@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Kitchen.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: require("sequelize").UUIDV4
+    },
     name: DataTypes.STRING
   }, {
     sequelize,

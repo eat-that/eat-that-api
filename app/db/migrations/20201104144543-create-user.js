@@ -24,7 +24,7 @@ module.exports = {
       birthday: {
         type: Sequelize.DATE
       },
-      adddress: {
+      address: {
         type: Sequelize.STRING
       },
       phone: {

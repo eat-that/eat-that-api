@@ -32,10 +32,15 @@ function create(user) {
     return new Promise(async (resolve, reject) => {
         try {
             user.password = bcrypt.hashSync(user.password, 10)
-
-            const res = await User.create(user);
+            // console.log(user)
+            const newUser = models.User.build(user);
+            console.log({newUser})
+            const res = await newUser.save()
+            // const res = await User.create(user);
+            console.log({res})
             resolve(res);
         } catch (err) {
+            console.log({err})
             reject(err);
         }
     });
