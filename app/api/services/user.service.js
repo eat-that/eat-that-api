@@ -1,4 +1,4 @@
-const userBuilder = require('../db/builders/user.builder');
+const userBuilder = require('../builders/user.builder');
 // const bcrypt = require('bcrypt');
 
 function getAll() {

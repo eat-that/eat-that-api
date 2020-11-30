@@ -1,4 +1,4 @@
-const models = require( '../models/index');
+const models = require( '../../db/models');
 const bcrypt = require('bcrypt');
 
 function getAll() {

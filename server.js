@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const db = require('./app/db/models/index');
-const routes = require('./app/modules/routes.modules');
+const routes = require('./app/api/modules/routes.modules');
 
 const corsOptions = {
     origin: "*",
