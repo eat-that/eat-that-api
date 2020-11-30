@@ -45,9 +45,21 @@ function updateUser(userId,newUser){
     });
 }
 
+function deleteUser(userId){
+    return new Promise(async(resolve,reject) => {
+        try {
+            const user = await userBuilder.deleteById(userId);
+            resolve(user);
+        } catch (err) {
+            reject(err)
+        }
+    });
+}
+
 module.exports = {
     getAll,
     getByEmail,
     createUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

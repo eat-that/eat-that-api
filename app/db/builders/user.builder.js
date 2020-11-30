@@ -61,9 +61,10 @@ function update(userId, user) {
 function deleteById(userId) {
     return new Promise(async (resolve, reject) => {
         try {
-            await User.destroy({
+            const res = await models.User.destroy({
                 where: {id: userId}
             });
+            resolve(res)
         } catch (err) {
             reject(err);
         }
