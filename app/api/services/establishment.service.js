@@ -1,6 +1,6 @@
 const establishmentBuilder = require('../builders/establishment.builder');
 
-function getAll() {
+function getAllEstablishment() {
     return new Promise(async (resolve, reject) => {
         try {
             const establishment = await establishmentBuilder.getAll();
@@ -45,7 +45,7 @@ function deleteEstablishment(establishmentId){
 }
 
 module.exports = {
-    getAll,
+    getAllEstablishment,
     deleteEstablishment,
     createEstablishment,
     updateEstablishment

@@ -2,7 +2,7 @@ const establishmentService = require('../services/establishment.service');
 
 exports.getAllEstablishments = async (req, res) => {
     try {
-        const establishments = await establishmentService.getAll();
+        const establishments = await establishmentService.getAllEstablishment();
         res.status(200).send(establishments);
     } catch (err) {
         res.status(err.status || 500).send({ message: err.message || 'Internal Server Error' });

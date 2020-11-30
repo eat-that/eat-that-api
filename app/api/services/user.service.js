@@ -1,7 +1,6 @@
 const userBuilder = require('../builders/user.builder');
-// const bcrypt = require('bcrypt');
 
-function getAll() {
+function getAllUsers() {
     return new Promise(async (resolve, reject) => {
         try {
             const user = await userBuilder.getAll();
@@ -57,7 +56,7 @@ function deleteUser(userId){
 }
 
 module.exports = {
-    getAll,
+    getAllUsers,
     getByEmail,
     createUser,
     updateUser,
